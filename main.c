@@ -6,8 +6,6 @@ int main(){
     printf("Please inset a real number: ");
     scanf("%lf", &x);
 
-    //test
-
     //f(x) = e^x + 𝑥3 − 2
     double y = sub(add(Exponent(x), Power(x,3)),2);
     printf("\nThe value of f(𝑥) = 𝑒^𝑥 + 𝑥^3 − 2 at the point %.4lf is: %.4lf", x, y);
