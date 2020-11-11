@@ -3,10 +3,17 @@ AR=ar
 FLAGS= -Wall -g
 
 all: libmyMath.so libmyMath.a mains maind
+
+mymaths: basicMath.o power.o
+	    $(AR) -rcs libmyMath.a basicMath.o power.o
+
+mymathd: basicMath.o power.o
+		$(CC) -shared -o libmyMath.so basicMath.o power.o
+
 mains: main.o libmyMath.a
 	$(CC) $(FLAGS) -o mains main.o libmyMath.a
 
-maind: main.o
+maind: main.o libmyMath.so
 	$(CC) $(FLAGS) -o maind main.o ./libmyMath.so
 
 libmyMath.a: basicMath.o power.o
@@ -24,7 +31,7 @@ basicMath.o: basicMath.c myMath.h
 power.o: power.c myMath.h
 		$(CC) $(FLAGS) -c power.c
 
-.PHONY: clean all
+.PHONY: clean all mymaths mymathd
 
 clean:
 	rm -f *.o *.a *.so mains maind

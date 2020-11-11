@@ -1,6 +1,6 @@
 
-#ifndef myMath.h
-#define myMath.h
+#ifndef MYMATH_H
+#define MYMATH_H
 
 float add(float x , float y);
 float sub(float x , float y);
