@@ -4,11 +4,9 @@ FLAGS= -Wall -g
 
 all: libmyMath.so libmyMath.a mains maind
 
-mymaths: basicMath.o power.o
-	    $(AR) -rcs libmyMath.a basicMath.o power.o
+mymaths: libmyMath.a
 
-mymathd: basicMath.o power.o
-		$(CC) -shared -o libmyMath.so basicMath.o power.o
+mymathd: libmyMath.so
 
 mains: main.o libmyMath.a
 	$(CC) $(FLAGS) -o mains main.o libmyMath.a
